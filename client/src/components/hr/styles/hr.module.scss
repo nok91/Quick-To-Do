@@ -1,0 +1,13 @@
+.hr {
+    height: 1px;
+    background-color: #E6E6E6;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    background-image: linear-gradient(to right , white 2%, #E6E6E6 50%, white 98%);
+    background-image: -o-linear-gradient(to right , white 2%, #E6E6E6 50%, white 98%);
+    background-image: -moz-linear-gradient(to right , white 2%, #E6E6E6 50%, white 98%);
+    background-image: -webkit-linear-gradient(to right , white 2%, #E6E6E6 50%, white 98%);
+    background-image: -ms-linear-gradient(to right , white 2%, #E6E6E6 50%, white 98%);
+    background-image: -webkit-gradient( linear, to right bottom, right bottom, color-stop(0.02, white), color-stop(0.5, gray), color-stop(0.98, white) );
+}

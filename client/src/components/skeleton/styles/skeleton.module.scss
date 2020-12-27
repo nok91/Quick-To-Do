@@ -1,0 +1,31 @@
+.skeleton {
+    height: 100vh;
+    max-height: 100vh;
+    min-height: 600;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    .head, .body, .footer {
+        padding: 0px 30px;
+        overflow: hidden;
+    }
+
+    .head{
+        flex: 0 0 20%;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    .body{
+        flex: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer{
+        flex: 0 0 20%;
+    }
+}

@@ -1,12 +1,16 @@
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom';
-import { Input, Button } from '@geist-ui/react'
-import Box from '@geist-ui/react-icons/box'
+import { Button } from '@geist-ui/react'
 import { createRoom } from '../../api';
-import { room } from '../../routes'
+import { room } from '../../routes';
+// Components
+import Skeleton from '../../components/skeleton';
+import RandomIcon from '../../components/random-icon';
+import QuoteBlock from '../../components/quote-block';
+import Hr from '../../components/hr';
 
 function Home() {
-    const [ getTitle, setTitle ] = useState();
+    const [ getTitle ] = useState();
     const history = useHistory();
 
     const handleCreateRoom = async () => {
@@ -14,15 +18,26 @@ function Home() {
         history.push(`${room}/${data['_id']}`)
     }
 
-    const onInputChange = (event) => {
-        setTitle(event.target.value)
-    }
+    // const onInputChange = (event) => {
+    //     setTitle(event.target.value)
+    // }
 
     return (
         <div>
             <div className="h-full">
-                <Input icon={<Box />} placeholder="Room name" onChange={onInputChange} style={{width: '100%'}} />
-                <Button type="secondary" auto size="small"onClick={handleCreateRoom}>Create</Button>
+                <Skeleton>
+                    <Skeleton.Head>
+                        <QuoteBlock />
+                    </Skeleton.Head>
+                    <Skeleton.Body>
+                        <RandomIcon />
+                    </Skeleton.Body>
+                    <Skeleton.Footer style={{textAlign: 'center'}}>
+                        <Hr />
+                        <p>Create your Tasks room and invite, share with others with a single click</p>
+                        <Button type="secondary" auto size="medium" onClick={handleCreateRoom} style={{width: '100%'}}>Create Instant Room</Button>
+                    </Skeleton.Footer>
+                </Skeleton>
             </div>
         </div>
     )

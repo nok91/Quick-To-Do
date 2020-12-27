@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Hr /> should have a profile image 1`] = `
+<div
+  class="hr"
+/>
+`;

@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Skeleton /> should have a profile image 1`] = `
+<div
+  class="skeleton"
+/>
+`;
+
+exports[`<Skeleton /> should match snapshot 1`] = `
+<div
+  class="skeleton"
+/>
+`;
+
+exports[`<Skeleton /> should match snapshot 2`] = `
+<div
+  class="skeleton"
+>
+  <div
+    class="head"
+  >
+    Head Content
+  </div>
+  <div
+    class="body"
+  >
+    Body Content
+  </div>
+  <div
+    class="footer"
+  >
+    Footer Content
+  </div>
+</div>
+`;
