@@ -6,11 +6,9 @@ import '@testing-library/jest-dom/extend-expect';
 import { configure } from '@testing-library/dom';
 
 Object.defineProperty(window, 'getComputedStyle', {
-    value: () => ({
-        getPropertyValue: (prop) => {
-            return '';
-        }
-    })
+  value: () => ({
+    getPropertyValue: () => ''
+  })
 });
 
 configure({ showOriginalStackTrace: false, defaultHidden: true });
