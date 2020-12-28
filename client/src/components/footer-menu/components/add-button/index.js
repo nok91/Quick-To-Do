@@ -3,25 +3,18 @@ import Plus from '@geist-ui/react-icons/plus';
 import cx from 'classnames';
 // Context Api
 import { ThemeContext, themes } from '../../../../store/theme.context';
-import { TasksContext } from '../../../../store/tasks.context';
 // Components
 import FooterMenuButton from '../footer-menu-button';
 // Styles
 import styles from './styles/addButton.module.scss';
+import useDummyTask from '../../../../api/hooks/useDummyTask';
 
 function AddButton() {
   const [getTheme] = useContext(ThemeContext);
-  const [, setTask] = useContext(TasksContext);
+  const { addDummy } = useDummyTask();
 
   const handleCreateTask = () => {
-    setTask([
-      {
-        _id: '0',
-        title: 'text',
-        completed: false,
-        idEdit: true
-      }
-    ]);
+    addDummy();
   };
 
   const className = cx({

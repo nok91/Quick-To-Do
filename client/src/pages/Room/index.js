@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Row, Loading, Progress } from '@geist-ui/react';
 import { useParams } from 'react-router-dom';
 // Context API
+import { Else, If, Then } from 'react-if';
 import { TasksContext } from '../../store/tasks.context';
 // Component
 import Skeleton from '../../components/skeleton';
@@ -17,8 +18,6 @@ function Room() {
   const getRoom = useGetRoom(id);
   const { data, error, isLoading, isError, total, completed } = useTasks(id);
 
-  console.log({ getTasks, data });
-
   if (isLoading) {
     return (
       <Row style={{ padding: '10px 0' }}>
@@ -31,6 +30,8 @@ function Room() {
     return <p>Error: {error}...</p>;
   }
 
+  const itHasData = data.length > 0 || getTasks.length > 0;
+
   return (
     <TasksContext.Provider value={[getTasks, setTask]}>
       <Skeleton className={styles.room}>
@@ -41,10 +42,17 @@ function Room() {
 
         <Skeleton.Body className={styles.body}>
           <div className={styles['tasks-list']}>
-            {data && data.map((task) => <TaskRow key={task._id} task={task} />)}
-            {getTasks.map((task) => (
-              <TaskRow key={task._id} task={task} isEdit />
-            ))}
+            <If condition={itHasData}>
+              <Then>
+                {data.map((task) => (
+                  <TaskRow key={task._id} task={task} />
+                ))}
+                {getTasks.map((task) => (
+                  <TaskRow key={task._id} task={task} isEdit />
+                ))}
+              </Then>
+              <Else>No Tasks</Else>
+            </If>
           </div>
         </Skeleton.Body>
 

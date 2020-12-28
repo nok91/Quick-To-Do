@@ -5,7 +5,7 @@
     animation: fadeIn ease 1s forwards;
     opacity: 0;
 
-    &.edit{
+    &.edit {
         animation-duration: .5s;
         animation-delay: 0s!important;
     }
@@ -15,6 +15,7 @@
         margin-right: 20px;
         margin-top: 2px;
     }
+
     .content {
         flex: 1;
 
