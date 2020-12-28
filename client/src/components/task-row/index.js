@@ -16,15 +16,21 @@ function TaskRow({ task, isEdit = false }) {
   const mutateTask = useCreateTask();
 
   useEffect(() => {
-    let timer;
     if (inputRef.current) {
       inputRef.current.setAttribute('autofocus', 'autofocus');
+      inputRef.current.focus();
+      inputRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      console.log('here');
+    }
+  }, []);
+
+  useEffect(() => {
+    let timer;
+    if (inputRef.current) {
       timer = setTimeout(() => {
-        inputRef.current.focus();
-        window.scrollTo(0, document.body.scrollHeight);
+        inputRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 300);
     }
-
     return () => {
       clearTimeout(timer);
     };
