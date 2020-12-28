@@ -1,7 +1,7 @@
 .skeleton {
     height: 100vh;
-    max-height: 100vh;
-    min-height: 600;
+    max-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    max-height: -webkit-fill-available;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -26,6 +26,6 @@
     }
 
     .footer{
-        flex: 0 0 20%;
+        flex: 0 0 150px;
     }
 }

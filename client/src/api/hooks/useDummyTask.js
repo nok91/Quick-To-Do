@@ -19,10 +19,8 @@ function useDummyTask() {
     reset();
     if (withAnimation) {
       clearTimeout(timer);
-      console.log({ withAnimation });
       timer = setTimeout(() => {
         setTask([dummyTask]);
-        console.log('setTask');
       }, 1000);
     } else {
       setTask([dummyTask]);

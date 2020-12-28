@@ -16,9 +16,18 @@ function TaskRow({ task, isEdit = false }) {
   const mutateTask = useCreateTask();
 
   useEffect(() => {
+    let timer;
     if (inputRef.current) {
-      inputRef.current.focus();
+      inputRef.current.setAttribute('autofocus', 'autofocus');
+      timer = setTimeout(() => {
+        inputRef.current.focus();
+        window.scrollTo(0, document.body.scrollHeight);
+      }, 300);
     }
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, []);
 
   const handleOnChecked = (event, _id) => {
@@ -59,6 +68,8 @@ function TaskRow({ task, isEdit = false }) {
                 type="text"
                 className={styles['input-title']}
                 placeholder="Add a Task..."
+                // eslint-disable-next-line jsx-a11y/no-autofocus
+                autoFocus
               />
             </form>
           </Then>

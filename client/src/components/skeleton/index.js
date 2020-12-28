@@ -7,7 +7,7 @@ import styles from './styles/skeleton.module.scss';
 function Skeleton({ children, className, ...rest }) {
   const classNames = cx({
     [styles.skeleton]: true,
-    [className]: true
+    [className]: Boolean(className)
   });
   return (
     <div className={classNames} {...rest}>
@@ -25,7 +25,7 @@ Skeleton.prototype = {
 function Head({ children, className, ...rest }) {
   const classNames = cx({
     [styles.head]: true,
-    [className]: true
+    [className]: Boolean(className)
   });
   return (
     <div className={classNames} {...rest}>
@@ -59,7 +59,7 @@ Body.prototype = {
 function Footer({ children, className, ...rest }) {
   const classNames = cx({
     [styles.footer]: true,
-    [className]: true
+    [className]: Boolean(className)
   });
   return (
     <div className={classNames} {...rest}>
