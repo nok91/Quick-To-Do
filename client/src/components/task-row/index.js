@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { Checkbox } from '@geist-ui/react';
 import { If, Then, Else } from 'react-if';
 import moment from 'moment';
@@ -8,12 +8,14 @@ import { useParams } from 'react-router-dom';
 import { useCreateTask, useUpdateTask } from '../../api/hooks';
 // Styles
 import styles from './styles/taskRow.module.scss';
+import { ThemeContext, themes } from '../../store/theme.context';
 
 function TaskRow({ task, isEdit = false }) {
   const { id } = useParams();
   const updateTask = useUpdateTask();
   const inputRef = useRef();
   const mutateTask = useCreateTask();
+  const [getTheme] = useContext(ThemeContext);
 
   useEffect(() => {
     if (inputRef.current) {
@@ -72,7 +74,11 @@ function TaskRow({ task, isEdit = false }) {
               <input
                 ref={inputRef}
                 type="text"
-                className={styles['input-title']}
+                className={cx({
+                  [styles['input-title']]: true,
+                  [styles.dark]: getTheme === themes.dark,
+                  [styles.light]: getTheme === themes.light
+                })}
                 placeholder="Add a Task..."
                 // eslint-disable-next-line jsx-a11y/no-autofocus
                 autoFocus
