@@ -26,4 +26,4 @@ jobs:
     - name: Add backend remote origin ${{ matrix.node-version }}
       run: git remote add heroku-backend https://heroku:${{ secrets.HEROKU_API_TOKEN }}@git.heroku.com/${{ secrets.HEROKU_BACKEND_APP_NAME }}.git
     - name: Deploy backend to Heroku
-      run: git push heroku-backend `git subtree split --prefix server HEAD`:refs/heads/master --force
+      run: git push heroku-backend `git subtree split --prefix server HEAD`:refs/heads/master --force 
