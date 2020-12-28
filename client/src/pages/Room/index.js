@@ -1,49 +1,23 @@
 import React, { useState } from 'react';
-import { Input, Button, Checkbox, Row, Loading } from '@geist-ui/react';
-import PenTool from '@geist-ui/react-icons/penTool';
-import { useQuery, useMutation, useQueryClient } from 'react-query';
+import { Row, Loading, Progress } from '@geist-ui/react';
 import { useParams } from 'react-router-dom';
-import { getTasks, createTask, updateTask } from '../../api';
-
+// Context API
+import { TasksContext } from '../../store/tasks.context';
+// Component
+import Skeleton from '../../components/skeleton';
+import { useGetRoom, useTasks } from '../../api/hooks';
+// Styles
 import styles from './styles/room.module.scss';
+import FooterMenu from '../../components/footer-menu';
+import TaskRow from '../../components/task-row';
 
 function Room() {
+  const [getTasks, setTask] = useState([]);
   const { id } = useParams();
-  const [getTitle, setTitle] = useState('');
-  const { data, error, isLoading, isError } = useQuery('task-list', () =>
-    getTasks(id)
-  );
-  const queryClient = useQueryClient();
-  const mutateTask = useMutation(createTask, {
-    onSuccess: () => {
-      queryClient.invalidateQueries('task-list');
-      setTitle('');
-    }
-  });
+  const getRoom = useGetRoom(id);
+  const { data, error, isLoading, isError, total, completed } = useTasks(id);
 
-  const mutateUTask = useMutation(updateTask, {
-    onSuccess: () => {
-      queryClient.invalidateQueries('room');
-    }
-  });
-
-  const handleCreateTask = () => {
-    mutateTask.mutate({
-      title: getTitle,
-      room: id
-    });
-  };
-
-  const onInputChange = (event) => {
-    setTitle(event.target.value);
-  };
-
-  const handleOnChecked = (event, _id) => {
-    mutateUTask.mutate({
-      _id,
-      completed: event.target.checked
-    });
-  };
+  console.log({ getTasks, data });
 
   if (isLoading) {
     return (
@@ -58,33 +32,27 @@ function Room() {
   }
 
   return (
-    <div className={styles.room}>
-      <div className={styles.create}>
-        <Input
-          icon={<PenTool />}
-          placeholder="Add a Task"
-          value={getTitle}
-          onChange={onInputChange}
-          style={{ width: '100%' }}
-        />
-        <Button type="secondary" auto size="small" onClick={handleCreateTask}>
-          Create
-        </Button>
-      </div>
-      <ul>
-        {data &&
-          data.map((task) => (
-            <div key={task._id}>
-              <Checkbox
-                onChange={(event) => handleOnChecked(event, task._id)}
-                checked={task.completed}
-              >
-                {task.title}
-              </Checkbox>
-            </div>
-          ))}
-      </ul>
-    </div>
+    <TasksContext.Provider value={[getTasks, setTask]}>
+      <Skeleton className={styles.room}>
+        <Skeleton.Head className={styles.head}>
+          <h1>{getRoom.isSuccess && getRoom.data.title}</h1>
+          <Progress className={styles.progress} value={completed} max={total} />
+        </Skeleton.Head>
+
+        <Skeleton.Body className={styles.body}>
+          <div className={styles['tasks-list']}>
+            {data && data.map((task) => <TaskRow key={task._id} task={task} />)}
+            {getTasks.map((task) => (
+              <TaskRow key={task._id} task={task} isEdit />
+            ))}
+          </div>
+        </Skeleton.Body>
+
+        <Skeleton.Footer className={styles.footer}>
+          <FooterMenu />
+        </Skeleton.Footer>
+      </Skeleton>
+    </TasksContext.Provider>
   );
 }
 

@@ -4,6 +4,7 @@ const roomSchema = new mongoose.Schema(
   {
     title: {
       type: String,
+      default: 'My Tasks',
       required: true,
       maxlength: 50
     }

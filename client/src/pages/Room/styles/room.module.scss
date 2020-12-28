@@ -1,11 +1,32 @@
-.room {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .create {
-        display: flex;
-        align-items: center;
+.room{
+    .progress{
+        height: 2px!important;
     }
-}
+    .head {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    .body {
+        flex-direction: column;
+        justify-content: flex-start;
+        .tasks-list {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            // &>div:nth-child(1) {
+            //     background-color: red;
+            // }
 
+            @for $i from 1 through 10 {
+                &>div:nth-child(#{$i}) {
+                    animation-delay: #{$i * 0.1}s;
+                }
+            }
+        }
+    }
+    .footer {
+        flex: 0 0 auto;
+    }
+   
+}

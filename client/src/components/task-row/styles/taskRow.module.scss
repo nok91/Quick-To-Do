@@ -1,0 +1,53 @@
+.task-row{
+    display: flex;
+    width: 100%;
+    padding: 20px 0px;
+    animation: fadeIn ease 1s forwards;
+    opacity: 0;
+
+    &.edit{
+        animation-duration: .5s;
+        animation-delay: 0s!important;
+    }
+
+    .checkbox {
+        flex: 0 0 auto;
+        margin-right: 20px;
+        margin-top: 2px;
+    }
+    .content {
+        flex: 1;
+
+        .title {
+            margin: 0px;
+
+            &::first-letter {
+                text-transform: capitalize;
+            }
+        }
+        .input-title {
+            border: 0px;
+            font-size: 14px;
+            font-weight: 700;
+            background-color: transparent;
+
+            &:focus {
+                outline: none;
+            }
+        }
+        .date {
+            color: #999;
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0;
+        transform: translate(0px, 100px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0px, 0px);
+    }
+}

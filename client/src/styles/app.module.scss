@@ -17,8 +17,16 @@ code {
 }
 
 .app {
-    background-color:white;
     max-width: 500px;
     margin: auto;
+    transition: background-color 300ms linear;
+    &.dark {
+        background-color:#0c1014;
+        color: white;
+    }
+    &.light {
+        background-color:white;
+        color: black;
+    }
 }
   

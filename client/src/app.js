@@ -1,23 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import * as routes from './routes';
+import cx from 'classnames';
 // Components
+import * as routes from './routes';
 import Home from './pages/Home';
 import ReduxDemo from './pages/ReduxDemo';
 import Room from './pages/Room';
 import NotFound from './pages/NotFound';
+import { ThemeContext, themes } from './store/theme.context';
 // Styles
-import './styles/app.scss';
+import styles from './styles/app.module.scss';
 
 const queryClient = new QueryClient();
 
 function App() {
+  const [getTheme, setTheme] = useState(themes.light);
+
+  const className = cx({
+    [styles.app]: true,
+    [styles.dark]: getTheme === themes.dark,
+    [styles.light]: getTheme === themes.light
+  });
+
   return (
-    <>
-      <QueryClientProvider client={queryClient}>
-        <div className="app">
+    <QueryClientProvider client={queryClient}>
+      <ThemeContext.Provider value={[getTheme, setTheme]}>
+        <div className={className}>
           <main className="bg-primaryLight">
             <div className="h-screen max-w-7xl mx-auto px-4 py-6 sm:px-6">
               <Switch>
@@ -30,8 +40,8 @@ function App() {
           </main>
         </div>
         <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
-    </>
+      </ThemeContext.Provider>
+    </QueryClientProvider>
   );
 }
 

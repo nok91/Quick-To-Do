@@ -1,48 +1,80 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
 // Styles
 import styles from './styles/skeleton.module.scss';
 
-const propTypes = {};
-const defaultProps = {};
-
-function skeleton({ children, ...rest }) {
+function Skeleton({ children, className, ...rest }) {
+  const classNames = cx({
+    [styles.skeleton]: true,
+    [className]: true
+  });
   return (
-    <div className={styles.skeleton} {...rest}>
+    <div className={classNames} {...rest}>
       {children}
     </div>
   );
 }
 
-function head({ children, ...rest }) {
+Skeleton.displayName = 'Skeleton';
+Skeleton.prototype = {
+  children: PropTypes.node,
+  className: PropTypes.string
+};
+
+function Head({ children, className, ...rest }) {
+  const classNames = cx({
+    [styles.head]: true,
+    [className]: true
+  });
   return (
-    <div className={styles.head} {...rest}>
+    <div className={classNames} {...rest}>
       {children}
     </div>
   );
 }
+Head.displayName = 'Skeleton.Head';
+Head.prototype = {
+  children: PropTypes.node,
+  className: PropTypes.string
+};
 
-function body({ children, ...rest }) {
+function Body({ children, className, ...rest }) {
+  const classNames = cx({
+    [styles.body]: true,
+    [className]: Boolean(className)
+  });
   return (
-    <div className={styles.body} {...rest}>
+    <div className={classNames} {...rest}>
       {children}
     </div>
   );
 }
+Body.displayName = 'Skeleton.Body';
+Body.prototype = {
+  children: PropTypes.node,
+  className: PropTypes.string
+};
 
-function footer({ children, ...rest }) {
+function Footer({ children, className, ...rest }) {
+  const classNames = cx({
+    [styles.footer]: true,
+    [className]: true
+  });
   return (
-    <div className={styles.footer} {...rest}>
+    <div className={classNames} {...rest}>
       {children}
     </div>
   );
 }
+Footer.displayName = 'Skeleton.Footer';
+Footer.prototype = {
+  children: PropTypes.node,
+  className: PropTypes.string
+};
 
-skeleton.displayName = 'skeleton';
-skeleton.propTypes = propTypes;
-skeleton.defaultProps = defaultProps;
+Skeleton.Head = Head;
+Skeleton.Body = Body;
+Skeleton.Footer = Footer;
 
-skeleton.Head = head;
-skeleton.Body = body;
-skeleton.Footer = footer;
-
-export default skeleton;
+export default Skeleton;
