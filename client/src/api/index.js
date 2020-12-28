@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://my-to-do-minimal.herokuapp.com';
+const API_URL = 'https://quick-to-do.herokuapp.com/';
 
 async function createRoom(name) {
   try {
