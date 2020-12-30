@@ -6,16 +6,16 @@ import { Else, If, Then } from 'react-if';
 import { TasksContext } from '../../store/tasks.context';
 // Component
 import Skeleton from '../../components/skeleton';
-import { useGetRoom, useTasks } from '../../api/hooks';
+import { useTasks } from '../../api/hooks';
 // Styles
 import styles from './styles/room.module.scss';
 import FooterMenu from '../../components/footer-menu';
 import TaskRow from '../../components/task-row';
+import TaskHead from '../../components/task-head';
 
 function Room() {
   const [getTasks, setTask] = useState([]);
   const { id } = useParams();
-  const getRoom = useGetRoom(id);
   const { data, error, isLoading, isError, total, completed } = useTasks(id);
 
   if (isLoading) {
@@ -36,9 +36,7 @@ function Room() {
     <TasksContext.Provider value={[getTasks, setTask]}>
       <Skeleton className={styles.room}>
         <Skeleton.Head className={styles.head}>
-          <h1 className={styles.title}>
-            {getRoom.isSuccess && getRoom.data.title}
-          </h1>
+          <TaskHead />
           <Progress className={styles.progress} value={completed} max={total} />
         </Skeleton.Head>
 

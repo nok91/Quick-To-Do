@@ -27,6 +27,15 @@ async function getRoom(id) {
   }
 }
 
+async function updateRoom({ id, ...params }) {
+  try {
+    const response = await axios.put(`${API_URL}/room/${id}`, params);
+    return response.data;
+  } catch (error) {
+    return console.error(error);
+  }
+}
+
 async function createTask({ title, room }) {
   try {
     const response = await axios.post(`${API_URL}/task`, { title, room });
@@ -54,4 +63,4 @@ async function updateTask({ id, ...params }) {
   }
 }
 
-export { createRoom, getRoom, getTasks, createTask, updateTask };
+export { createRoom, getRoom, updateRoom, getTasks, createTask, updateTask };
