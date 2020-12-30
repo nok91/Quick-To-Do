@@ -2,6 +2,7 @@ import React from 'react';
 import { Checkbox } from '@geist-ui/react';
 import { If, Then, Else } from 'react-if';
 import cx from 'classnames';
+import Edit3 from '@geist-ui/react-icons/edit3';
 // Hooks
 import { useUpdateTask } from '../../api/hooks';
 // Components
@@ -28,10 +29,17 @@ function TaskRow({ task, isEdit = false }) {
       })}
     >
       <div className={styles.checkbox}>
-        <Checkbox
-          onChange={(event) => handleOnChecked(event, task._id)}
-          checked={task.completed}
-        />
+        <If condition={isEdit}>
+          <Then>
+            <Edit3 size={16} />
+          </Then>
+          <Else>
+            <Checkbox
+              onChange={(event) => handleOnChecked(event, task._id)}
+              checked={task.completed}
+            />
+          </Else>
+        </If>
       </div>
       <div className={styles.content}>
         <If condition={isEdit}>
