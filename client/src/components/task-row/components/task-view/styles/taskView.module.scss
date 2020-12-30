@@ -1,0 +1,24 @@
+.title {
+    margin: 0px;
+    &::first-letter {
+        text-transform: capitalize;
+    }
+    &.completed {
+        position: relative;
+        display: inline-block;
+
+        &:after {
+            content: '';
+            position: absolute;
+            left: 0px;
+            top: 50%;
+            width: 100%;
+            transform: translateY(-50%);
+            height: 1px;
+            background-color: red;
+        }
+    }
+}
+.date {
+    color: #999;
+}

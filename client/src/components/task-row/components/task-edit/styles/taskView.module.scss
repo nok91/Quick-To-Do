@@ -1,0 +1,18 @@
+.input-title {
+    border: 0px;
+    font-size: 14px;
+    font-weight: 700;
+    background-color: transparent;
+
+    &.dark {
+        color: white;
+    }
+
+    &.light {
+        color: black;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}

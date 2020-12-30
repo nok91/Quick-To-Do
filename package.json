@@ -16,5 +16,6 @@
   "bugs": {
     "url": "https://github.com/nok91/mern-starter/issues"
   },
-  "homepage": "https://github.com/nok91/mern-starter#readme"
+  "homepage": "https://github.com/nok91/mern-starter#readme",
+  "dependencies": {}
 }

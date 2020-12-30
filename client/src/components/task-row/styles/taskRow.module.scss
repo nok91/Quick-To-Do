@@ -20,34 +20,5 @@
 
     .content {
         flex: 1;
-
-        .title {
-            margin: 0px;
-
-            &::first-letter {
-                text-transform: capitalize;
-            }
-        }
-        .input-title {
-            border: 0px;
-            font-size: 14px;
-            font-weight: 700;
-            background-color: transparent;
-
-            &.dark {
-                color: white;
-            }
-
-            &.light {
-                color: black;
-            }
-
-            &:focus {
-                outline: none;
-            }
-        }
-        .date {
-            color: #999;
-        }
     }
 }
