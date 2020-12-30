@@ -19,7 +19,7 @@ function TaskHeadEdit() {
   const { isDark, isLight } = useContext(ThemeContext);
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess && data && data.title) {
       setValue(data.title);
     }
   }, [isSuccess]);
