@@ -8,7 +8,7 @@ import { ThemeContext } from '../../../../store/theme.context';
 // Hooks
 import { useGetRoom, useUpdateRoom } from '../../../../api/hooks';
 // Styles
-import styles from './styles/taskHeadEdit.module.scss';
+import styles from './styles/task-head-edit.module.scss';
 
 function TaskHeadEdit() {
   const { id } = useParams();
