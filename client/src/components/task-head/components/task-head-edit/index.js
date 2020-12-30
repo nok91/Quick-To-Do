@@ -18,8 +18,6 @@ function TaskHeadEdit() {
   const updateRoom = useUpdateRoom();
   const { isDark, isLight } = useContext(ThemeContext);
 
-  console.log({ isDark, isLight });
-
   useEffect(() => {
     if (isSuccess) {
       setValue(data?.title);
