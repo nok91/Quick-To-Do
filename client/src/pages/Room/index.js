@@ -36,7 +36,9 @@ function Room() {
     <TasksContext.Provider value={[getTasks, setTask]}>
       <Skeleton className={styles.room}>
         <Skeleton.Head className={styles.head}>
-          <h1>{getRoom.isSuccess && getRoom.data.title}</h1>
+          <h1 className={styles.title}>
+            {getRoom.isSuccess && getRoom.data.title}
+          </h1>
           <Progress className={styles.progress} value={completed} max={total} />
         </Skeleton.Head>
 
