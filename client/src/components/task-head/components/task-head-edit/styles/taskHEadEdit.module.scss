@@ -7,4 +7,13 @@
     margin-inline-end: 0px;
     font-weight: bold;
     border: 0px;
+    background-color: transparent;
+
+    &.dark {
+        color: white;
+    }
+
+    &.light {
+        color: black;
+    }
 }

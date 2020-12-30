@@ -1,11 +1,14 @@
 import { Loading, Row, Text } from '@geist-ui/react';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import cx from 'classnames';
+// Api Context
+import { ThemeContext } from '../../../../store/theme.context';
 // Hooks
 import { useGetRoom, useUpdateRoom } from '../../../../api/hooks';
 // Styles
-import styles from './styles/taskHEadEdit.module.scss';
+import styles from './styles/taskHeadEdit.module.scss';
 
 function TaskHeadEdit() {
   const { id } = useParams();
@@ -13,6 +16,9 @@ function TaskHeadEdit() {
   const { register, handleSubmit, errors } = useForm(); // initialize the hook
   const [getValue, setValue] = useState('');
   const updateRoom = useUpdateRoom();
+  const { isDark, isLight } = useContext(ThemeContext);
+
+  console.log({ isDark, isLight });
 
   useEffect(() => {
     if (isSuccess) {
@@ -48,6 +54,11 @@ function TaskHeadEdit() {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <input
+        className={cx({
+          [styles.input]: true,
+          [styles.dark]: isDark,
+          [styles.light]: isLight
+        })}
         name="taskTitle"
         ref={register({
           required: 'Task title is required.',
@@ -60,7 +71,6 @@ function TaskHeadEdit() {
             message: 'Max length is 50 characters.'
           }
         })}
-        className={styles.input}
         type="text"
         onChange={handleOnChange}
         value={getValue}
