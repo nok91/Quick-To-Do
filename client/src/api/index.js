@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const API_URL = 'https://quick-to-do.herokuapp.com';
+console.log({ env: process.env });
+
+const { API_URL } = process.env;
 
 async function createRoom(name) {
   try {
