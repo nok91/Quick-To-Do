@@ -20,7 +20,7 @@ function TaskHeadEdit() {
 
   useEffect(() => {
     if (isSuccess) {
-      setValue(data?.title);
+      setValue(data.title);
     }
   }, [isSuccess]);
 
