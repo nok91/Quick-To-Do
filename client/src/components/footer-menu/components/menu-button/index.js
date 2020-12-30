@@ -1,11 +1,12 @@
 import React from 'react';
-import User from '@geist-ui/react-icons/user';
+import MenuIcon from '@geist-ui/react-icons/menu';
+// Component
 import FooterMenuButton from '../footer-menu-button';
 
-function MenuButton() {
+function MenuButton({ onClick }) {
   return (
-    <FooterMenuButton>
-      <User />
+    <FooterMenuButton onClick={onClick}>
+      <MenuIcon />
     </FooterMenuButton>
   );
 }

@@ -6,12 +6,13 @@ import { ThemeContext, themes } from '../../../../store/theme.context';
 import FooterMenuButton from '../footer-menu-button';
 
 function DarkLightButton() {
-  const [getTheme, setTheme] = useContext(ThemeContext);
+  const { isDark, handler } = useContext(ThemeContext);
+  const [, setTheme] = handler;
 
   const handleOnClick = () => {
     let theme = themes.dark;
 
-    if (getTheme === themes.dark) {
+    if (isDark) {
       theme = themes.light;
     }
 
@@ -21,7 +22,7 @@ function DarkLightButton() {
   return (
     <div>
       <FooterMenuButton onClick={handleOnClick}>
-        {getTheme === themes.dark ? <Sun /> : <Moon />}
+        {isDark ? <Sun /> : <Moon />}
       </FooterMenuButton>
     </div>
   );

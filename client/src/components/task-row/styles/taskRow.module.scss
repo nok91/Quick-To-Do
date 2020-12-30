@@ -1,8 +1,10 @@
+@import '../../../styles/global/animations.scss';
+
 .task-row{
     display: flex;
     width: 100%;
     padding: 20px 0px;
-    animation: fadeIn ease 1s forwards;
+    animation: fadeInUp ease 1s forwards;
     opacity: 0;
 
     &.edit {
@@ -47,16 +49,5 @@
         .date {
             color: #999;
         }
-    }
-}
-
-@keyframes fadeIn {
-    from { 
-        opacity: 0;
-        transform: translate(0px, 100px);
-    }
-    to {
-        opacity: 1;
-        transform: translate(0px, 0px);
     }
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
@@ -9,25 +9,26 @@ import Home from './pages/Home';
 import ReduxDemo from './pages/ReduxDemo';
 import Room from './pages/Room';
 import NotFound from './pages/NotFound';
-import { ThemeContext, themes } from './store/theme.context';
+import { ThemeContext } from './store/theme.context';
 // Styles
 import styles from './styles/app.module.scss';
+import useThemeContext from './store/hooks/useTheme.context';
 
 const queryClient = new QueryClient();
 
 function App() {
-  const [getTheme, setTheme] = useState(themes.light);
-
-  const className = cx({
-    [styles.app]: true,
-    [styles.dark]: getTheme === themes.dark,
-    [styles.light]: getTheme === themes.light
-  });
+  const { isDark, isLight, handler } = useThemeContext();
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeContext.Provider value={[getTheme, setTheme]}>
-        <div className={className}>
+      <ThemeContext.Provider value={{ isDark, isLight, handler }}>
+        <div
+          className={cx({
+            [styles.app]: true,
+            [styles.dark]: isDark,
+            [styles.light]: isLight
+          })}
+        >
           <main className="bg-primaryLight">
             <div className="h-screen max-w-7xl mx-auto px-4 py-6 sm:px-6">
               <Switch>

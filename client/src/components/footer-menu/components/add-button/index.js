@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Plus from '@geist-ui/react-icons/plus';
 import cx from 'classnames';
 // Context Api
-import { ThemeContext, themes } from '../../../../store/theme.context';
+import { ThemeContext } from '../../../../store/theme.context';
 // Components
 import FooterMenuButton from '../footer-menu-button';
 // Styles
@@ -10,7 +10,7 @@ import styles from './styles/addButton.module.scss';
 import useDummyTask from '../../../../api/hooks/useDummyTask';
 
 function AddButton() {
-  const [getTheme] = useContext(ThemeContext);
+  const { isDark, isLight } = useContext(ThemeContext);
   const { addDummy } = useDummyTask();
 
   const handleCreateTask = () => {
@@ -19,8 +19,8 @@ function AddButton() {
 
   const className = cx({
     [styles['add-button']]: true,
-    [styles.dark]: getTheme === themes.dark,
-    [styles.light]: getTheme === themes.light
+    [styles.dark]: isDark,
+    [styles.light]: isLight
   });
   return (
     <FooterMenuButton className={className} onClick={handleCreateTask}>

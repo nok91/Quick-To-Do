@@ -8,14 +8,14 @@ import { useParams } from 'react-router-dom';
 import { useCreateTask, useUpdateTask } from '../../api/hooks';
 // Styles
 import styles from './styles/taskRow.module.scss';
-import { ThemeContext, themes } from '../../store/theme.context';
+import { ThemeContext } from '../../store/theme.context';
 
 function TaskRow({ task, isEdit = false }) {
   const { id } = useParams();
   const updateTask = useUpdateTask();
   const inputRef = useRef();
   const mutateTask = useCreateTask();
-  const [getTheme] = useContext(ThemeContext);
+  const { isDark, isLight } = useContext(ThemeContext);
 
   useEffect(() => {
     if (inputRef.current) {
@@ -76,8 +76,8 @@ function TaskRow({ task, isEdit = false }) {
                 type="text"
                 className={cx({
                   [styles['input-title']]: true,
-                  [styles.dark]: getTheme === themes.dark,
-                  [styles.light]: getTheme === themes.light
+                  [styles.dark]: isDark,
+                  [styles.light]: isLight
                 })}
                 placeholder="Add a Task..."
                 // eslint-disable-next-line jsx-a11y/no-autofocus
