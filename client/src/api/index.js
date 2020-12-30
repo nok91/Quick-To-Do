@@ -2,7 +2,11 @@ import axios from 'axios';
 
 console.log({ env: process.env });
 
-const { API_URL } = process.env;
+const API_URL = process.env.REACT_APP_API_URL;
+
+if (!API_URL) {
+  throw console.error('API: Environment variable missing!');
+}
 
 async function createRoom(name) {
   try {
