@@ -27,9 +27,19 @@ function useDummyTask() {
     }
   }
 
+  function setDummyTask(title) {
+    setTask([
+      {
+        ...dummyTask,
+        title
+      }
+    ]);
+  }
+
   return {
     getTasks,
     addDummy,
+    setDummyTask,
     reset
   };
 }

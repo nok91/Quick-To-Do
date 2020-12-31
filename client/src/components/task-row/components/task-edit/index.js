@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
 import { useParams } from 'react-router-dom';
 // Context Api
@@ -7,12 +7,20 @@ import { ThemeContext } from '../../../../store/theme.context';
 import { useCreateTask } from '../../../../api/hooks';
 // Styles
 import styles from './styles/taskView.module.scss';
+import {
+  LifecycleContext,
+  lifecycles
+} from '../../../../store/lifecycle.context';
+import useDummyTask from '../../../../api/hooks/useDummyTask';
 
 function TaskEdit() {
   const { id } = useParams();
+  const [getInputValue, setInputValue] = useState('');
   const mutateTask = useCreateTask();
-  const inputRef = useRef();
   const { isDark, isLight } = useContext(ThemeContext);
+  const { setLifecycleStatus } = useContext(LifecycleContext);
+  const { setDummyTask } = useDummyTask();
+  const inputRef = useRef();
 
   useEffect(() => {
     if (inputRef.current) {
@@ -23,16 +31,11 @@ function TaskEdit() {
   }, []);
 
   useEffect(() => {
-    let timer;
-    if (inputRef.current) {
-      timer = setTimeout(() => {
-        inputRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 300);
+    setLifecycleStatus(lifecycles['task-typing-start']);
+    if (getInputValue.length > 0) {
+      setLifecycleStatus(lifecycles['task-typing-ready']);
     }
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
+  }, [getInputValue]);
 
   const onFormSubmit = (event) => {
     event.preventDefault();
@@ -41,6 +44,23 @@ function TaskEdit() {
       room: id,
       title: inputRef.current.value
     });
+  };
+
+  const onChange = () => {
+    setInputValue(inputRef.current.value);
+    setDummyTask(inputRef.current.value);
+  };
+
+  const onBlur = () => {
+    // setLifecycleStatus(lifecycles.init);
+    // reset();
+  };
+
+  const onFocus = () => {
+    setLifecycleStatus(lifecycles['task-typing-start']);
+    if (getInputValue.length > 0) {
+      setLifecycleStatus(lifecycles['task-typing-ready']);
+    }
   };
 
   return (
@@ -55,6 +75,10 @@ function TaskEdit() {
             [styles.light]: isLight
           })}
           placeholder="Add a Task..."
+          value={getInputValue}
+          onChange={onChange}
+          onBlur={onBlur}
+          onFocus={onFocus}
           // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus
         />
