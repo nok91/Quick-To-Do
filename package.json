@@ -1,21 +1,20 @@
 {
-  "name": "mern-starter",
+  "name": "Quick-To-Do",
+  "description": "Quick To Do list",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nok91/mern-starter.git"
-  },
+  "private": true,
+  "repository": "https://github.com/nok91/Quick-To-Do.git",
   "keywords": [],
-  "author": "",
+  "author": "Mohammed <mohammed.nokri@itg.co.uk>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nok91/mern-starter/issues"
+    "url": "https://github.com/nok91/Quick-To-Do/issues"
   },
-  "homepage": "https://github.com/nok91/mern-starter#readme",
-  "dependencies": {}
+  "homepage": "https://github.com/nok91/Quick-To-Do#readme",
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
 }
