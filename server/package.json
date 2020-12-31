@@ -4,8 +4,8 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "npm run build && node dist/index.js",
-    "build": "npm run clean && babel src --out-dir dist",
+    "start": "yarn run build && node dist/index.js",
+    "build": "yarn run clean && babel src --out-dir dist",
     "clean": "rm -rf dist && mkdir dist",
     "dev": "nodemon --exec babel-node src/index.js",
     "test": "NODE_ENV=test jest --forceExit --detectOpenHandles",
