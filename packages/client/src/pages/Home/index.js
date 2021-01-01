@@ -27,10 +27,7 @@ function Home() {
       </Skeleton.Body>
       <Skeleton.Footer style={{ textAlign: 'center' }}>
         <Hr />
-        <p>
-          Create your Tasks room and invite, share with others with a single
-          click
-        </p>
+        <p>Create your Tasks room and invite, share with others with a single click</p>
         <Button
           type="secondary"
           auto

@@ -11,8 +11,6 @@ describe('<QuoteBlock />', () => {
       quote: 'This is a <b> Random Text </b>'
     });
     render(<QuoteBlock />);
-    expect(
-      screen.getByRole('heading', { name: /this is a random text/i })
-    ).toBeTruthy();
+    expect(screen.getByRole('heading', { name: /this is a random text/i })).toBeTruthy();
   });
 });

@@ -3,14 +3,7 @@ import React from 'react';
 import styles from './styles/overlayBg.module.scss';
 
 function OverlayBg({ onClick }) {
-  return (
-    <div
-      role="dialog"
-      className={styles['overlay-bg']}
-      onClick={onClick}
-      aria-hidden
-    />
-  );
+  return <div role="dialog" className={styles['overlay-bg']} onClick={onClick} aria-hidden />;
 }
 
 OverlayBg.displayName = 'OverlayBg';

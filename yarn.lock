@@ -2345,6 +2345,26 @@
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
 
+"@nokon/eslint-config@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@nokon/eslint-config/-/eslint-config-1.0.6.tgz#d7aab919d163dff96ee2c9d88736714a7bc38820"
+  integrity sha512-fQTpiFA55+Mhr6whyMGpaBfD/EBdwX31EF1calEvizKyibAlPVkSzTUPU5rYOSK0UA/IK/0Qxp3bewrjCQpFrg==
+  dependencies:
+    eslint-config-airbnb "^18.2.1"
+    eslint-config-prettier "^7.1.0"
+    eslint-plugin-import "^2.22.1"
+    eslint-plugin-jsx-a11y "^6.4.1"
+    eslint-plugin-prettier "^3.3.0"
+    eslint-plugin-react "^7.22.0"
+    prettier "^2.2.1"
+
+"@nokon/prettier-config@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@nokon/prettier-config/-/prettier-config-1.0.6.tgz#4ff5a3769de73065173df951f8732089c6fe28c6"
+  integrity sha512-NlEWHfNOZbk0FX3Iz4SSq+euBa6AI2kBu2U+z3ZUzUwWrHVdIA+MTs3pniFN7WUEdyfX3HEgNLcL/eIUdTAvfQ==
+  dependencies:
+    prettier "^2.2.1"
+
 "@npmcli/move-file@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@npmcli/move-file/-/move-file-1.0.1.tgz#de103070dac0f48ce49cf6693c23af59c0f70464"
@@ -6323,7 +6343,7 @@ eslint-plugin-react-hooks@^4.2.0:
   resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.2.0.tgz#8c229c268d468956334c943bb45fc860280f5556"
   integrity sha512-623WEiZJqxR7VdxFCKLI6d6LLpwJkGPYKODnkH3D7WpOG5KM8yWueBd8TLsNAetEJNF5iJmolaAKO3F8yzyVBQ==
 
-eslint-plugin-react@^7.21.5:
+eslint-plugin-react@^7.21.5, eslint-plugin-react@^7.22.0:
   version "7.22.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.22.0.tgz#3d1c542d1d3169c45421c1215d9470e341707269"
   integrity sha512-p30tuX3VS+NWv9nQot9xIGAHBXR0+xJVaZriEsHoJrASGCJZDJ8JLNM0YqKqI0AKm6Uxaa1VUHoNEibxRCMQHA==

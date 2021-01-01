@@ -7,10 +7,7 @@ import { ThemeContext } from '../../../../store/theme.context';
 import { useCreateTask } from '../../../../api/hooks';
 // Styles
 import styles from './styles/taskView.module.scss';
-import {
-  LifecycleContext,
-  lifecycles
-} from '../../../../store/lifecycle.context';
+import { LifecycleContext, lifecycles } from '../../../../store/lifecycle.context';
 import useDummyTask from '../../../../api/hooks/useDummyTask';
 
 function TaskEdit() {

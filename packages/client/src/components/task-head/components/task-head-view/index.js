@@ -11,9 +11,7 @@ function TaskHeadView() {
 
   return (
     <>
-      <h1 className={styles.title}>
-        {getRoom.isSuccess && getRoom.data.title}
-      </h1>
+      <h1 className={styles.title}>{getRoom.isSuccess && getRoom.data.title}</h1>
     </>
   );
 }

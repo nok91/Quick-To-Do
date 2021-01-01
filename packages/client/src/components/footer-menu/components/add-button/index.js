@@ -8,10 +8,7 @@ import { Loading, Row } from '@geist-ui/react';
 import { useParams } from 'react-router-dom';
 // Context Api
 import { ThemeContext } from '../../../../store/theme.context';
-import {
-  LifecycleContext,
-  lifecycles
-} from '../../../../store/lifecycle.context';
+import { LifecycleContext, lifecycles } from '../../../../store/lifecycle.context';
 // Hooks
 import useDummyTask from '../../../../api/hooks/useDummyTask';
 import { useCreateTask } from '../../../../api/hooks';

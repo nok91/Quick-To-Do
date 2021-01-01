@@ -1,0 +1,14 @@
+{
+  "env": {
+    "jest": true
+  },
+  "extends": [
+    "@nokon/eslint-config"
+  ],
+  "rules": {
+    "consistent-return": 0,
+    "no-console": 0,
+    "import/prefer-default-export": "off",
+    "no-underscore-dangle":  "off"
+  }
+}

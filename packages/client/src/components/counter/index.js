@@ -45,9 +45,7 @@ function Counter() {
         <button
           className={styles.button}
           type="button"
-          onClick={() =>
-            dispatch(incrementByAmount(Number(incrementAmount) || 0))
-          }
+          onClick={() => dispatch(incrementByAmount(Number(incrementAmount) || 0))}
         >
           Add Amount
         </button>

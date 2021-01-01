@@ -6,12 +6,7 @@ import useQuoteBlock from './hooks/useQuoteBlock';
 
 function QuoteBlock() {
   const { quote } = useQuoteBlock();
-  return (
-    <h2
-      className={styles['quote-block']}
-      dangerouslySetInnerHTML={{ __html: quote }}
-    />
-  );
+  return <h2 className={styles['quote-block']} dangerouslySetInnerHTML={{ __html: quote }} />;
 }
 
 QuoteBlock.displayName = 'quoteBlock';

@@ -21,9 +21,7 @@ function DarkLightButton() {
 
   return (
     <div>
-      <FooterMenuButton onClick={handleOnClick}>
-        {isDark ? <Sun /> : <Moon />}
-      </FooterMenuButton>
+      <FooterMenuButton onClick={handleOnClick}>{isDark ? <Sun /> : <Moon />}</FooterMenuButton>
     </div>
   );
 }

@@ -12,11 +12,7 @@ function Menu({ children, toggleMenuStatus }) {
         </nav>
         <HR />
         <div className={styles['button-container']}>
-          <button
-            type="button"
-            className={styles.button}
-            onClick={toggleMenuStatus}
-          >
+          <button type="button" className={styles.button} onClick={toggleMenuStatus}>
             <b>Done</b>
           </button>
         </div>

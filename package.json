@@ -14,7 +14,13 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts" : {
+    "lint": "eslint ."
+  },
   "devDependencies": {
+    "@nokon/eslint-config": "^1.0.6",
+    "@nokon/prettier-config": "^1.0.6",
+    "eslint": "^7.16.0",
     "lerna": "^3.22.1"
   }
 }

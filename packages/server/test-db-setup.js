@@ -11,9 +11,7 @@ const models = { Room, Task };
 dotenv.config();
 
 const url =
-  process.env.MONGODB_URI ||
-  process.env.DB_URL ||
-  'mongodb://localhost:27017/tipe-devapi-testing';
+  process.env.MONGODB_URI || process.env.DB_URL || 'mongodb://localhost:27017/tipe-devapi-testing';
 
 global.newId = () => mongoose.Types.ObjectId();
 

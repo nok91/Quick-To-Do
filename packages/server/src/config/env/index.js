@@ -3,8 +3,7 @@ import dotenv from 'dotenv';
 import yargs from 'yargs';
 
 const resolve = (filename) => path.resolve(__dirname, filename);
-const envName =
-  (yargs && yargs.argv && yargs.argv.env) || process.env.NODE_ENV || 'dev';
+const envName = (yargs && yargs.argv && yargs.argv.env) || process.env.NODE_ENV || 'dev';
 
 /**
  * Loads environment variables from .env files.
