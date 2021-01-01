@@ -14,13 +14,45 @@
   "workspaces": [
     "packages/*"
   ],
-  "scripts" : {
-    "lint": "eslint ."
-  },
   "devDependencies": {
     "@nokon/eslint-config": "^1.0.6",
     "@nokon/prettier-config": "^1.0.6",
     "eslint": "^7.16.0",
-    "lerna": "^3.22.1"
+    "husky": "^4.3.6",
+    "lerna": "^3.22.1",
+    "lint-staged": "^10.5.3"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "prettier": "prettier --write \"packages/**/*.js\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js, jsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "*.{ts,tsx}": [
+      "tslint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "*.{md,html}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.css": [
+      "yarn stylelint",
+      "git add"
+    ],
+    "*.scss": [
+      "stylelint --fix",
+      "git add"
+    ]
   }
 }
