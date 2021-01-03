@@ -15,11 +15,16 @@
     "packages/*"
   ],
   "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@commitlint/config-lerna-scopes": "^11.0.0",
     "@nokon/eslint-config": "^1.0.6",
     "@nokon/prettier-config": "^1.0.6",
+    "commitlint": "^11.0.0",
     "eslint": "^7.16.0",
     "husky": "^4.3.6",
     "lerna": "^3.22.1",
+    "lerna-changelog": "^1.0.1",
     "lint-staged": "^10.5.3"
   },
   "scripts": {
@@ -28,7 +33,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
